@@ -1,2 +1,2 @@
-# collectselector
+# college selector
 Project 2
