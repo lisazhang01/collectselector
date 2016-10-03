@@ -1,0 +1,47 @@
+header#header
+  .header-middle
+    .container
+      .row
+        .col-sm-4
+          .logo.pull-left
+            h1 College Select
+        .col-sm-8
+          .top-menu.pull-right
+            ul.nav.navbar-nav
+              li
+                a(href='#')
+                  i.fa.fa-user
+                  |  Account
+              li
+                a(href='#')
+                  i.fa.fa-star
+                  |  My Shortlist
+              li
+                a(href='login.html')
+                  i.fa.fa-lock
+                  |  Login
+  .header-bottom
+    .container
+      .row
+        .col-sm-9
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          .mainmenu.pull-left
+            ul.nav.navbar-nav.collapse.navbar-collapse
+              li
+                a.active(href='index.html') Home
+              li
+                a(href='#') Search
+              li.dropdown
+                a(href='#')
+                  | Blog
+                  i.fa.fa-angle-down
+                ul.sub-menu(role='menu')
+                  li
+                    a(href='blog.html') Top 10 Colleges
+                  li
+                    a(href='blog-single.html') Top 10 Degrees

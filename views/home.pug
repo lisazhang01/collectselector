@@ -1,0 +1,250 @@
+extends layout
+
+block content
+  section
+    .container
+      .row
+        .col-sm-12.banner
+          h1 I want to be a _______
+          button Find my course
+  section
+    .container
+      .row
+        .col-sm-3
+          .left-sidebar
+            h2 Search Options
+            #accordian.panel-group.search-options
+              .panel.panel-default
+                .panel-heading
+                  h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordian', href='#location')
+                      span.badge.pull-right
+                        i.fa.fa-plus
+                      |                       Location
+                #location.panel-collapse.collapse
+                  .panel-body
+                    ul
+                      li
+                        a(href='#') Location 1
+                      li
+                        a(href='#') Location 2
+                      li
+                        a(href='#') Location 3
+                      li
+                        a(href='#') Location 4
+                      li
+                        a(href='#') Location 5
+              .panel.panel-default
+                .panel-heading
+                  h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordian', href='#subject')
+                      span.badge.pull-right
+                        i.fa.fa-plus
+                      |                       Subject
+                #subject.panel-collapse.collapse
+                  .panel-body
+                    ul
+                      li
+                        a(href='#') Sub 1
+                      li
+                        a(href='#') Sub 1
+                      li
+                        a(href='#') Sub 1
+                      li
+                        a(href='#') Sub 1
+                      li
+                        a(href='#') Sub 1
+              .panel.panel-default
+                .panel-heading
+                  h4.panel-title
+                    a(href='#') Major
+              .panel.panel-default
+                .panel-heading
+                  h4.panel-title
+                    a(href='#') Level of Award
+              .panel.panel-default
+                .panel-heading
+                  h4.panel-title
+                    a(href='#') Institution Type
+
+            .price-range
+              h2 Tuition Range
+              .well.text-center
+                input#sl2.span2(type='text', value='', data-slider-min='0', data-slider-max='100', data-slider-step='5', data-slider-value='[250,450]')
+                br
+                b.pull-left $ 0
+                b.pull-right $ 100k
+
+        .col-sm-9.padding-right
+          .search-results
+            h2.title.text-center Search Results
+            .col-sm-4
+              .college-wrapper
+                .single-uni
+                  .productinfo.text-center
+                    img(src='', alt='')
+                    h2
+                      a(href='#') College Name
+                    p
+                      a(href='#') Degree Name
+                .choose
+                  ul.nav.nav-pills.nav-justified
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to shortlist
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to compare
+            .col-sm-4
+              .college-wrapper
+                .single-uni
+                  .college-info.text-center
+                    img(src='', alt='')
+                    h2
+                      a(href='#') College Name
+                    p
+                      a(href='#') Degree Name
+                .choose
+                  ul.nav.nav-pills.nav-justified
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to shortlist
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to compare
+            .col-sm-4
+              .college-wrapper
+                .single-uni
+                  .college-info.text-center
+                    img(src='', alt='')
+                    h2
+                      a(href='#') College Name
+                    p
+                      a(href='#') Degree Name
+                .choose
+                  ul.nav.nav-pills.nav-justified
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to shortlist
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to compare
+            .col-sm-4
+              .college-wrapper
+                .single-uni
+                  .college-info.text-center
+                    img(src='', alt='')
+                    h2
+                      a(href='#') College Name
+                    p
+                      a(href='#') Degree Name
+                .choose
+                  ul.nav.nav-pills.nav-justified
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to shortlist
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to compare
+            .col-sm-4
+              .college-wrapper
+                .single-uni
+                  .college-info.text-center
+                    img(src='', alt='')
+                    h2
+                      a(href='#') College Name
+                    p
+                      a(href='#') Degree Name
+                .choose
+                  ul.nav.nav-pills.nav-justified
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to shortlist
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to compare
+            .col-sm-4
+              .college-wrapper
+                .single-uni
+                  .college-info.text-center
+                    img(src='', alt='')
+                    h2
+                      a(href='#') College Name
+                    p
+                      a(href='#') Degree Name
+                .choose
+                  ul.nav.nav-pills.nav-justified
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to shortlist
+                    li
+                      a(href='#')
+                        i.fa.fa-plus-square
+                        | Add to compare
+
+          .top-ten
+            h2.title.text-center US News Top 10
+            #top-ten-carousel.carousel.slide(data-ride='carousel')
+              .carousel-inner
+                .item.active
+                  .col-sm-4
+                    .college-wrapper
+                      .single-uni
+                        .college-info.text-center
+                          img(src='', alt='')
+                          h2 College Name
+                          p Description
+                  .col-sm-4
+                    .college-wrapper
+                      .single-uni
+                        .college-info.text-center
+                          img(src='', alt='')
+                          h2 College Name
+                          p Description
+                  .col-sm-4
+                    .collge-wrapper
+                      .single-uni
+                        .college-info.text-center
+                          img(src='', alt='')
+                          h2 College Name
+                          p Description
+                .item
+                  .col-sm-4
+                    .college-wrapper
+                      .single-uni
+                        .college-info.text-center
+                          img(src='', alt='')
+                          h2 College Name
+                          p Description
+                  .col-sm-4
+                    .college-wrapper
+                      .single-uni
+                        .college-info.text-center
+                          img(src='', alt='')
+                          h2 College Name
+                          p Description
+                  .col-sm-4
+                    .college-wrapper
+                      .single-uni
+                        .college-info.text-center
+                          img(src='', alt='')
+                          h2 College Name
+                          p Description
+              a.left.top-ten-control(href='#top-tem-carousel', data-slide='prev')
+                i.fa.fa-angle-left
+              a.right.top-ten-control(href='#top-ten-carousel', data-slide='next')
+                i.fa.fa-angle-right
+
+
+
