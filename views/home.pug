@@ -12,28 +12,18 @@ block content
       .row
         .col-sm-3
           .left-sidebar
-            h2 Search Options
+            h2 Filter by
             #accordian.panel-group.search-options
               .panel.panel-default
                 .panel-heading
-                  h4.panel-title
-                    a(data-toggle='collapse', data-parent='#accordian', href='#location')
-                      span.badge.pull-right
-                        i.fa.fa-plus
-                      |                       Location
-                #location.panel-collapse.collapse
-                  .panel-body
-                    ul
-                      li
-                        a(href='#') Location 1
-                      li
-                        a(href='#') Location 2
-                      li
-                        a(href='#') Location 3
-                      li
-                        a(href='#') Location 4
-                      li
-                        a(href='#') Location 5
+                  //- h4.panel-title
+                  //-   a(data-toggle='collapse', data-parent='#accordian', href='#location')
+                  //-     span.badge.pull-right
+                  //-       i.fa.fa-plus
+                  select#state(name='State')
+                    option Select State...
+                      option(value='States') All
+
               .panel.panel-default
                 .panel-heading
                   h4.panel-title

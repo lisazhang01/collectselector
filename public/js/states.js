@@ -1,4 +1,4 @@
-{
+var states = {
   AL: "Alabama",
   AK: "Alaska",
   AZ: "Arizona",

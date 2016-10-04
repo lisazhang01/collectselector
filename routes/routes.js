@@ -44,7 +44,7 @@ module.exports = function(app, passport){
       failureFlash: true
     }));
 
-      // Secret
+  // Secret
   app.get('/home', isLoggedIn, function(req, res){
     res.render('home', { message: req.flash('loginMessage') });
   });
@@ -69,7 +69,7 @@ module.exports = function(app, passport){
     var http = require('http');
     var fs   = require('fs');
 
-    var file    = fs.createWriteStream("tmp/file.csv"); //Create new empty file
+    var file    = fs.createWriteStream("tmp/file.csv"); //Create new empty file ?s=all&tv=200&xv=380
     var request = http.get("http://nces.ed.gov/collegenavigator/default.aspx?"+ncesQuery+"&l=91+92+93+94&ic=1&xp=2", function(response) {
       file.on("close", function(){
         var colleges = []; //Create empty array
@@ -86,4 +86,6 @@ module.exports = function(app, passport){
       response.pipe(file); //Request info from website, using code for each variable
     });
   });
+
+
 }

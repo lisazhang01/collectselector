@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema   = mongoose.Schema;
 var bcrypt   = require('bcrypt-nodejs');
 
-// define the schema for user
-var userSchema = mongoose.Schema({
 
+var UserSchema = new Schema({
     local            : {
-        email        : String,
+        email        : {type: String, unique: true},
         password     : String,
     },
     facebook         : {
@@ -34,19 +34,34 @@ var userSchema = mongoose.Schema({
         email        : String,
         name         : String
     }
-
 });
 
-// methods ======================
-// generating a hash
-userSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
 
-// checking if password is valid
-userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password);
-};
+UserSchema.pre('save', function(next){ //Save pw before creating user
+  const user = this;
+  if(!user.isModified('password')){
+    return next();
+  }
+  bcrypt.genSalt(10, function(err, salt){
+    if(err) {
+      console.log('Could not generate salt', err);
+    }
+    bcrypt.hash(user.password, salt, null, function(err, hash){
+      user.password = hash;
+    });
+  });
+});
 
-// create the model for users and expose it to our app
-module.exports = mongoose.model('User', userSchema);
+/*
+* Compare password
+*/
+UserSchema.methods.comparePassword = function(candidatePassword, cb){
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+    cb(err, isMatch); //checks if true or false
+  });
+}
+
+
+const User = mongoose.model('User', UserSchema);
+
+module.exports = User;
