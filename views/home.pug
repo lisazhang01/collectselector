@@ -26,24 +26,27 @@ block content
 
               .panel.panel-default
                 .panel-heading
-                  h4.panel-title
-                    a(data-toggle='collapse', data-parent='#accordian', href='#subject')
-                      span.badge.pull-right
-                        i.fa.fa-plus
+                  select#program(name='Program')
+                    option Select Subject...
+                      option(value='Program') All
+                  //- h4.panel-title
+                  //-   a(data-toggle='collapse', data-parent='#accordian', href='#subject')
+                  //-     span.badge.pull-right
+                  //-       i.fa.fa-plus
                       |                       Subject
-                #subject.panel-collapse.collapse
-                  .panel-body
-                    ul
-                      li
-                        a(href='#') Sub 1
-                      li
-                        a(href='#') Sub 1
-                      li
-                        a(href='#') Sub 1
-                      li
-                        a(href='#') Sub 1
-                      li
-                        a(href='#') Sub 1
+                //- #subject.panel-collapse.collapse
+                //-   .panel-body
+                //-     ul
+                //-       li
+                //-         a(href='#') Sub 1
+                //-       li
+                //-         a(href='#') Sub 1
+                //-       li
+                //-         a(href='#') Sub 1
+                //-       li
+                //-         a(href='#') Sub 1
+                //-       li
+                //-         a(href='#') Sub 1
               .panel.panel-default
                 .panel-heading
                   h4.panel-title
