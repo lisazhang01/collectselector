@@ -54,4 +54,36 @@ module.exports = function(app, passport){
     req.logout();
     res.redirect('/');
   });
+
+  app.get('/test', function(req, res){
+    var query     = req.query;
+    var ncesQuery = "";
+
+    for (var key in query) {
+      ncesQuery += key + "=" + query[key];
+    }
+
+    console.log(ncesQuery);
+
+    //Setting up data collecting system
+    var http = require('http');
+    var fs   = require('fs');
+
+    var file    = fs.createWriteStream("tmp/file.csv"); //Create new empty file
+    var request = http.get("http://nces.ed.gov/collegenavigator/default.aspx?"+ncesQuery+"&l=91+92+93+94&ic=1&xp=2", function(response) {
+      file.on("close", function(){
+        var colleges = []; //Create empty array
+
+        require("fast-csv").fromPath("tmp/file.csv", {headers: true}).on("data", function(data){
+          if (data["Name"]) {
+            colleges.push(data); //Push data into array if college has name
+          }
+        }).on("end", function(){
+          res.send(colleges); //Send array to front end
+        });
+      });
+
+      response.pipe(file); //Request info from website, using code for each variable
+    });
+  });
 }

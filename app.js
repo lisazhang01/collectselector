@@ -44,25 +44,26 @@ require('./routes/routes')(app, passport);
 // //Twitter controller
 // require('./controller/twitter')(app,passport);
 
-// listen
-// app.listen( 3000, function(){
-//   console.log('listening on port 3000');
-// });
+//listen
+app.listen( 3000, function(){
+  console.log('listening on port 3000');
+});
 
+// //Setting up data collecting system
 // var http = require('http');
 // var fs   = require('fs');
 
-// var file = fs.createWriteStream("tmp/file.csv");
+// var file = fs.createWriteStream("tmp/file.csv"); //Create new empty file
 // var request = http.get("http://nces.ed.gov/collegenavigator/default.aspx?s=AK&l=91+92+93+94&ic=1&xp=2", function(response) {
-//   response.pipe(file);
+//   response.pipe(file); //Request info from website, using code for each variable
 
-//   var colleges = [];
+//   var colleges = []; //Create empty array
 //   require("fast-csv").fromPath("tmp/file.csv", {headers: true}).on("data", function(data){
 //     if (data["Name"]) {
-//       colleges.push(data);
+//       colleges.push(data); //Push data into array if college has name
 //     }
 //   }).on("end", function(){
 //     console.log(colleges)
-//     // res.send(colleges)
+//     res.send(colleges) //Send array to front end
 //   });
 // });
