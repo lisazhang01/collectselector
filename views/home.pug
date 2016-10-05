@@ -26,27 +26,16 @@ block content
 
               .panel.panel-default
                 .panel-heading
-                  select#program(name='Program')
-                    option Select Subject...
-                      option(value='Program') All
-                  //- h4.panel-title
-                  //-   a(data-toggle='collapse', data-parent='#accordian', href='#subject')
-                  //-     span.badge.pull-right
-                  //-       i.fa.fa-plus
-                      |                       Subject
-                //- #subject.panel-collapse.collapse
-                //-   .panel-body
-                //-     ul
-                //-       li
-                //-         a(href='#') Sub 1
-                //-       li
-                //-         a(href='#') Sub 1
-                //-       li
-                //-         a(href='#') Sub 1
-                //-       li
-                //-         a(href='#') Sub 1
-                //-       li
-                //-         a(href='#') Sub 1
+                  select#levelOne(name='levelOne')
+                    option Select Program...
+                    option All
+                  select#levelTwo(name='levelTwo')
+                    option Select Sub Category
+                    option All
+                  select#levelThree(name='levelThree')
+                    option Select Sub Category
+                    option All
+
               .panel.panel-default
                 .panel-heading
                   h4.panel-title
