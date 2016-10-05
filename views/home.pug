@@ -5,8 +5,9 @@ block content
     .container
       .row
         .col-sm-12.banner
-          h1 I want to be a _______
-          button Find my course
+          .col-sm-offset-3
+            h1 I want to be a _______
+
   section
     .container
       .row
@@ -20,7 +21,6 @@ block content
                   select#state(name='State')
                     option Select State...
                       option(value='States') All
-
               .panel.panel-default
                 .panel-heading
                   h2 Program
@@ -33,27 +33,30 @@ block content
                   select#levelThree(name='levelThree')
                     option Select Sub Category
                     option All
+              .row
+                .col-sm-offset-3
+                  button#search Find my course
 
-              .panel.panel-default
-                .panel-heading
-                  h4.panel-title
-                    a(href='#') Major
-              .panel.panel-default
-                .panel-heading
-                  h4.panel-title
-                    a(href='#') Level of Award
-              .panel.panel-default
-                .panel-heading
-                  h4.panel-title
-                    a(href='#') Institution Type
+              //- .panel.panel-default
+              //-   .panel-heading
+              //-     h4.panel-title
+              //-       a(href='#') Major
+              //- .panel.panel-default
+              //-   .panel-heading
+              //-     h4.panel-title
+              //-       a(href='#') Level of Award
+              //- .panel.panel-default
+              //-   .panel-heading
+              //-     h4.panel-title
+              //-       a(href='#') Institution Type
 
-            .price-range
-              h2 Tuition Range
-              .well.text-center
-                input#sl2.span2(type='text', value='', data-slider-min='0', data-slider-max='100', data-slider-step='5', data-slider-value='[250,450]')
-                br
-                b.pull-left $ 0
-                b.pull-right $ 100k
+            //- .price-range
+            //-   h2 Tuition Range
+            //-   .well.text-center
+            //-     input#sl2.span2(type='text', value='', data-slider-min='0', data-slider-max='100', data-slider-step='5', data-slider-value='[250,450]')
+            //-     br
+            //-     b.pull-left $ 0
+            //-     b.pull-right $ 100k
 
         .col-sm-9.padding-right
           .search-results
@@ -74,10 +77,7 @@ block content
                         a(href='#')
                           i.fa.fa-plus-square
                           | Add to shortlist
-                      li
-                        a(href='#')
-                          i.fa.fa-plus-square
-                          | Add to compare
+
             - }
           .top-ten
             h2.title.text-center US News Top 10

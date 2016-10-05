@@ -336,11 +336,13 @@ ul.sub-menu {
 ******* Home ******
 **************************/
 
-#banner {
-  /*background-image: url("images/backg-gray-vector.jpg")*/
-  background-color: black;
-  position: absolute;
-  border: 2px solid black;
+.banner {
+  background-image: url("images/backg-gray-vector.jpg");
+  height: 400px;
+}
+
+.banner h1 h2 {
+  text-align: center;
 }
 
 .search-options {
@@ -448,6 +450,14 @@ h2.title:before{
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+select {
+  width: 200px;
+}
+
+#search {
+ margin: 0 auto;
 }
 
 

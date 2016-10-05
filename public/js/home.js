@@ -66,14 +66,26 @@ $( document ).ready(function() {
 
   byProgram();
 
-//To dynamically generate individual college info on home page
-  var rankByAphabet = function() {
-    // extract data from your inputs
+//To rank colleges by selected params
+  var rankByParam = function() {
+    //Gather code for url composition
+    var stateCip        = $('#state').val(); //AK
+    var progLvlOneCip   = programCip[$('#levelOne').val()].cip;
+    var progLvlTwoCip   = programCip[$('#levelOne').val()].sub[$('#levelTwo').val()].cip;
+    var progLvlThreeCip = programCip[$('#levelOne').val()].sub[$('#levelTwo').val()].sub[$('#levelThree').val()].cip;
 
-    location.href = "/home?" + "s=AK"
-  }
 
-  // rankByAphabet();
+    location.href = "/home?" + "s=" + stateCip + "&p=" + progLvlOneCip + "+" + progLvlTwoCip + "+" + progLvlThreeCip
+
+  };
+
+  $('#search').click (function() {
+    rankByParam();
+  });
+
+
+
+
 }); //End of doc ready func
 
 

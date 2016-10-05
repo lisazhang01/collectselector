@@ -45,9 +45,9 @@ module.exports = function(app, passport){
     }));
 
   // Secret
-  app.get('/home', isLoggedIn, function(req, res){
-    res.render('home', { message: req.flash('loginMessage') });
-  });
+  // app.get('/home', isLoggedIn, function(req, res){
+  //   res.render('home', { message: req.flash('loginMessage') });
+  // });
 
   // logout
   app.get('/logout', function(req, res){
@@ -64,13 +64,20 @@ module.exports = function(app, passport){
   };
 
 // Getting query info from selection
-  app.get('/test', function(req, res){
+  app.get('/home', function(req, res){
     var query     = hasKey(req.query) ? req.query : {s: "all", hs: 1};
     var ncesQuery = "";
 
     for (var key in query) {
       ncesQuery += key + "=" + query[key] + "&";
     }
+
+    // try to find colleges using {name: nsecQuery}
+    //   if found render home with the colleges you found from mongo
+    //   else
+    //     you download file from nces & parse to an array(colleges)
+    //     save collges into the mongo
+    //       only after you save, you render home
 
     console.log(ncesQuery);
 
