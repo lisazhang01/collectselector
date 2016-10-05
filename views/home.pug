@@ -60,121 +60,27 @@ block content
         .col-sm-9.padding-right
           .search-results
             h2.title.text-center Search Results
-            .col-sm-4
-              .college-wrapper
-                .single-uni
-                  .productinfo.text-center
-                    img(src='', alt='')
-                    h2
-                      a(href='#') College Name
-                    p
-                      a(href='#') Degree Name
-                .choose
-                  ul.nav.nav-pills.nav-justified
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to shortlist
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to compare
-            .col-sm-4
-              .college-wrapper
-                .single-uni
-                  .college-info.text-center
-                    img(src='', alt='')
-                    h2
-                      a(href='#') College Name
-                    p
-                      a(href='#') Degree Name
-                .choose
-                  ul.nav.nav-pills.nav-justified
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to shortlist
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to compare
-            .col-sm-4
-              .college-wrapper
-                .single-uni
-                  .college-info.text-center
-                    img(src='', alt='')
-                    h2
-                      a(href='#') College Name
-                    p
-                      a(href='#') Degree Name
-                .choose
-                  ul.nav.nav-pills.nav-justified
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to shortlist
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to compare
-            .col-sm-4
-              .college-wrapper
-                .single-uni
-                  .college-info.text-center
-                    img(src='', alt='')
-                    h2
-                      a(href='#') College Name
-                    p
-                      a(href='#') Degree Name
-                .choose
-                  ul.nav.nav-pills.nav-justified
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to shortlist
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to compare
-            .col-sm-4
-              .college-wrapper
-                .single-uni
-                  .college-info.text-center
-                    img(src='', alt='')
-                    h2
-                      a(href='#') College Name
-                    p
-                      a(href='#') Degree Name
-                .choose
-                  ul.nav.nav-pills.nav-justified
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to shortlist
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to compare
-            .col-sm-4
-              .college-wrapper
-                .single-uni
-                  .college-info.text-center
-                    img(src='', alt='')
-                    h2
-                      a(href='#') College Name
-                    p
-                      a(href='#') Degree Name
-                .choose
-                  ul.nav.nav-pills.nav-justified
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to shortlist
-                    li
-                      a(href='#')
-                        i.fa.fa-plus-square
-                        | Add to compare
-
+            - for (var i = 0; i < colleges.length; i++) {
+              .col-sm-4
+                .college-wrapper
+                  .single-uni
+                    .productinfo.text-center
+                      img(src='', alt='')
+                      h2
+                        a(href='#')= colleges[i]["Name"]
+                      p
+                        a(href='#')= colleges[i]["Awards offered"]
+                  .choose
+                    ul.nav.nav-pills.nav-justified
+                      li
+                        a(href='#')
+                          i.fa.fa-plus-square
+                          | Add to shortlist
+                      li
+                        a(href='#')
+                          i.fa.fa-plus-square
+                          | Add to compare
+            - }
           .top-ten
             h2.title.text-center US News Top 10
             #top-ten-carousel.carousel.slide(data-ride='carousel')
