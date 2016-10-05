@@ -16,16 +16,14 @@ block content
             #accordian.panel-group.search-options
               .panel.panel-default
                 .panel-heading
-                  //- h4.panel-title
-                  //-   a(data-toggle='collapse', data-parent='#accordian', href='#location')
-                  //-     span.badge.pull-right
-                  //-       i.fa.fa-plus
+                  h2 State
                   select#state(name='State')
                     option Select State...
                       option(value='States') All
 
               .panel.panel-default
                 .panel-heading
+                  h2 Program
                   select#levelOne(name='levelOne')
                     option Select Program...
                     option All
@@ -67,7 +65,7 @@ block content
                     .productinfo.text-center
                       img(src='', alt='')
                       h2
-                        a(href='#')= colleges[i]["Name"]
+                        a(href= 'http://'+ colleges[i]["Website"])= colleges[i]["Name"]
                       p
                         a(href='#')= colleges[i]["Awards offered"]
                   .choose

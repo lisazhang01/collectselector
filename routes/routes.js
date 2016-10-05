@@ -88,7 +88,7 @@ module.exports = function(app, passport){
             colleges.push(data); //Push data into array if college has name
           }
         }).on("end", function(){
-          res.render("home", {colleges: colleges}); //Send array to front end
+          res.render('home', {colleges: colleges}); //Send array to front end
           // res.send(colleges); //Send array to front end
         });
       });
