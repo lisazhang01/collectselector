@@ -3,12 +3,18 @@ extends layout
 block content
   section
     .container
-      .row
-        .col-sm-12.banner
-          .col-sm-offset-3
-            h1 I want to be a _______
+      .banner
+        .content
+          .visible
+            p
+              I want to study
+            ul
+              li Software Development
+              li Engineering
+              li Architecture
+              li Business Administration
 
-  section
+  section#main
     .container
       .row
         .col-sm-3
@@ -19,23 +25,19 @@ block content
                 .panel-heading
                   h2 State
                   select#state(name='State')
-                    option Select State...
-                      option(value='States') All
+                    option(value="") Select State...
+                    option(value="All") All
               .panel.panel-default
                 .panel-heading
                   h2 Program
                   select#levelOne(name='levelOne')
-                    option Select Program...
-                    option All
+                    option(value="") Select Program...
                   select#levelTwo(name='levelTwo')
-                    option Select Sub Category
-                    option All
+                    option(value="") Select Sub Category
                   select#levelThree(name='levelThree')
-                    option Select Sub Category
-                    option All
-              .row
-                .col-sm-offset-3
-                  button#search Find my course
+                    option(value="") Select Sub Category
+              .panel.panel-default.text-center
+                button#search Find my course
 
               //- .panel.panel-default
               //-   .panel-heading
@@ -65,12 +67,11 @@ block content
               .col-sm-4
                 .college-wrapper
                   .single-uni
-                    .productinfo.text-center
-                      img(src='', alt='')
+                    .college-info.text-center
+                      img(src="", alt='')
                       h2
                         a(href= 'http://'+ colleges[i]["Website"])= colleges[i]["Name"]
-                      p
-                        a(href='#')= colleges[i]["Awards offered"]
+                      p= colleges[i]["Address"]
                   .choose
                     ul.nav.nav-pills.nav-justified
                       li
@@ -79,6 +80,18 @@ block content
                           | Add to shortlist
 
             - }
+          ul.pagination
+            li
+              a(href='#') 1
+            li
+              a(href='#') 2
+            li
+              a(href='#') 3
+            li
+              a(href='#') 4
+            li
+              a(href='#') 5
+
           .top-ten
             h2.title.text-center US News Top 10
             #top-ten-carousel.carousel.slide(data-ride='carousel')

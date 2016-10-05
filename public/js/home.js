@@ -1,28 +1,23 @@
 $( document ).ready(function() {
 
-//Dynamically generate dropdown menu by state
+  //Dynamically generate dropdown menu by state
   var byStates = function() {
     for (var key in states) {
       $('<option>').val(key).text(states[key]).appendTo('#state');
     }
-    // Search and alert by selected state
-    $('#state').change(function(){
-      alert("Selected state is : " + $('#state').val());
-    });
   };
 
-  byStates();
-
-
-//Dynamically generate program and sub program drop down menu
+  //Dynamically generate program and sub program drop down menu
   var resetLevelTwo = function () {
     $('#levelTwo').html(""); // clears out the existing stuff
-    $('<option>').text("All").appendTo('#levelTwo'); //Create All option and add to top of list
+    $('<option>').text("Select Sub Category").val("").appendTo('#levelTwo'); //Create All option and add to top of list
+    $('<option>').text("All").val("").appendTo('#levelTwo'); //Create All option and add to top of list
   };
 
   var resetLevelThree = function () {
     $('#levelThree').html(""); // clears out the existing stuff
-    $('<option>').text("All").appendTo('#levelThree'); //Create All option and add to top of list
+    $('<option>').text("Select Sub Category").val("").appendTo('#levelThree'); //Create All option and add to top of list
+    $('<option>').text("All").val("").appendTo('#levelThree'); //Create All option and add to top of list
   };
 
   var byProgram = function() {
@@ -64,34 +59,49 @@ $( document ).ready(function() {
     });
   };
 
-  byProgram();
+  var extractInput = function () {
+    var params = {};
 
-//To rank colleges by selected params
-  var rankByParam = function() {
-    //Gather code for url composition
-    var stateCip        = $('#state').val(); //AK
+    // get the state
+    params["s"] = $('#state').val(); //AK
+
+    // get program cip
     var progLvlOneCip   = programCip[$('#levelOne').val()].cip;
     var progLvlTwoCip   = programCip[$('#levelOne').val()].sub[$('#levelTwo').val()].cip;
     var progLvlThreeCip = programCip[$('#levelOne').val()].sub[$('#levelTwo').val()].sub[$('#levelThree').val()].cip;
 
+    params["p"] = progLvlThreeCip | progLvlTwoCip | progLvlOneCip;
 
-    location.href = "/home?" + "s=" + stateCip + "&p=" + progLvlOneCip + "+" + progLvlTwoCip + "+" + progLvlThreeCip
-
+    return params;
   };
 
-  $('#search').click (function() {
-    rankByParam();
-  });
+  var querifyObject = function (obj) {
+    var queryStr = "";
 
+    for (var key in obj) {
+      if (query[key]) {
+        queryStr += key + "=" + query[key] + "&";
+      }
+    }
 
+    return queryStr;
+  };
 
+  //To rank colleges by selected params
+  var rankByParam = function() {
+    var params    = extractInput();
+    var queryStr  = querifyObject(params)
 
+    location.href = "/home?" + queryStr;
+  };
+
+  // Initilize
+  var init = function () {
+    $('#search').click(rankByParam);
+
+    byStates();
+    byProgram();
+  };
+
+  init();
 }); //End of doc ready func
-
-
-
-
-
-
-
-

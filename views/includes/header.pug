@@ -4,7 +4,9 @@ header#header
       .row
         .col-sm-4
           .logo.pull-left
-            h1 College Select
+            a(href='/home')
+              img(src="../../images/logo-arrow.png", alt='')
+              h1 College Select
         .col-sm-8
           .top-menu.pull-right
             ul.nav.navbar-nav
@@ -17,7 +19,7 @@ header#header
                   i.fa.fa-star
                   |  My Shortlist
               li
-                a(href='login.html')
+                a(href='/signup')
                   i.fa.fa-lock
                   |  Login
   .header-bottom
@@ -42,6 +44,6 @@ header#header
                   i.fa.fa-angle-down
                 ul.sub-menu(role='menu')
                   li
-                    a(href='blog.html') Top 10 Colleges
+                    a(href='http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings') College Ranking 2016
                   li
-                    a(href='blog-single.html') Top 10 Degrees
+                    a(href='http://www.princetonreview.com/college-advice/top-ten-college-majors') Top 10 Degrees

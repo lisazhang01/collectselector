@@ -79,7 +79,7 @@ module.exports = function(app, passport){
     //     save collges into the mongo
     //       only after you save, you render home
 
-    console.log(ncesQuery);
+
 
     //Setting up data collecting system
     var http = require('http');
