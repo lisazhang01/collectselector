@@ -83,7 +83,6 @@ module.exports = function(app, passport){
     //       only after you save, you render home
 
 
-
 //Setting up data collecting system
     var http = require('http');
     var fs   = require('fs');
@@ -117,4 +116,28 @@ module.exports = function(app, passport){
       }
     });
   });
-}
+
+//Saves each shortlisted college into user db
+  app.post('/shortlist', function(req, res) {
+    var name = req.body.name;
+    var address = req.body.address;
+    var url = req.body.url;
+
+    req.user.shortlist.push({
+      'name': name,
+      'address': address,
+      'url':url
+    });
+
+    req.user.save(function(err, newUser){
+      res.json(newUser.shortlist);
+    });
+  });
+
+//Gets saved colleges for each user and renders onto shorlist page
+  app.get('/shortlist', isLoggedIn, function(req,res){
+    res.render('shortlist',{shortlist: req.user.shortlist});
+  });
+
+
+} //end of module.export func

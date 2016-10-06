@@ -23,7 +23,7 @@ var UserSchema = new Schema({
         img          : String
     },
     shortlist        : [{
-        name         : Sting.
+        name         : String,
         address      : String,
         url          : String
     }]
