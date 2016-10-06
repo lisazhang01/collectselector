@@ -42,7 +42,7 @@ require('./config/passport')(passport);
 require('./routes/routes')(app, passport);
 
 // //Twitter controller
-// require('./controller/twitter')(app,passport);
+require('./controller/twitter')(app,passport);
 
 //listen
 app.listen( 3000, function(){

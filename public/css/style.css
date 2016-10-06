@@ -155,7 +155,7 @@ a#scrollUp i{
   font-size: 17px;
   font-weight: 300;
   padding: 0;
-  padding-bottom: 10px;
+/*  padding-bottom: 10px;*/
 }
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .top-menu ul li a.active{
@@ -355,17 +355,17 @@ ul.sub-menu {
   background-color: #c0cee5;
   height: 430px;
   width: 100%;
-  padding-bottom: : 30px;
-  /*position: absolute;*/
+/*  padding-bottom: : 30px;*/
+  /*position: ;*/
 }
 
 .content {
   position: absolute;
-  top: 55%;
-  left: 20%;
+  margin-top: 13%;
+  margin-left: 20%;
   /*transform: translate(-50%, -50%);*/
   font-size: 40px;
-  line-height: 40px;
+  line-height: 120%;
   font-family: 'Roboto', sans-serif;
   height: 160px;
   overflow:hidden;
@@ -374,10 +374,10 @@ ul.sub-menu {
 .visible {
   font-weight:600;
   overflow:hidden;
-  height:40px;
+  height:50px;
   padding:0 40px;
 
-  &:before {
+/*  &:before {
     content:'[';
     left: 0;
     line-height:40px;
@@ -386,7 +386,7 @@ ul.sub-menu {
     content:']';
     position:absolute;
     right: 0;
-    line-height:40px;
+    line-height:40px;*/
   }
   &:after, &:before {
     position:absolute;
@@ -403,7 +403,7 @@ ul.sub-menu {
   }
 }
 
-.visitble p {
+.visible p {
   display:inline;
   float:left;
   margin:0;
@@ -425,7 +425,7 @@ ul.sub-menu {
 }
 
 .visible ul li {
-  line-height:40px;
+  line-height:120%;
   margin:0;
 }
 
@@ -707,8 +707,11 @@ h2.title {
   overflow: hidden;
 }
 
-.login-form {
-
+.login-form a img{
+  height: 35px;
+  margin-top: -5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .signup-form {
@@ -751,7 +754,13 @@ h2.title {
 }
 
 .login-form form button {
-  margin-top: 23px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin-left: -200px;
+}
+
+.signup-form form button {
+  margin-top: 25px;
 }
 
 .login-form form button, .signup-form form button {
@@ -790,4 +799,8 @@ h2.title {
   margin-top: 75px;
   text-align: center;
   width: 50px;
+}
+
+.singup-form form button {
+  margin-bottom: -20px;
 }

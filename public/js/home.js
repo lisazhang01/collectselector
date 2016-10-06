@@ -66,11 +66,15 @@ $( document ).ready(function() {
     params["s"] = $('#state').val(); //AK
 
     // get program cip
-    var progLvlOneCip   = programCip[$('#levelOne').val()].cip;
-    var progLvlTwoCip   = programCip[$('#levelOne').val()].sub[$('#levelTwo').val()].cip;
-    var progLvlThreeCip = programCip[$('#levelOne').val()].sub[$('#levelTwo').val()].sub[$('#levelThree').val()].cip;
+    var $levelOne   = $('#levelOne');
+    var $levelTwo   = $('#levelTwo');
+    var $levelThree = $('#levelThree');
 
-    params["p"] = progLvlThreeCip | progLvlTwoCip | progLvlOneCip;
+    var progLvlOneCip   = $levelOne.val()   ? programCip[$levelOne.val()].cip : "";
+    var progLvlTwoCip   = $levelTwo.val()   ? programCip[$levelOne.val()].sub[$levelTwo.val()].cip : "";
+    var progLvlThreeCip = $levelThree.val() ? programCip[$levelOne.val()].sub[$levelTwo.val()].sub[$levelThree.val()].cip : "";
+
+    params["p"] = progLvlThreeCip || progLvlTwoCip || progLvlOneCip;
 
     return params;
   };
@@ -79,8 +83,8 @@ $( document ).ready(function() {
     var queryStr = "";
 
     for (var key in obj) {
-      if (query[key]) {
-        queryStr += key + "=" + query[key] + "&";
+      if (obj[key]) {
+        queryStr += key + "=" + obj[key] + "&";
       }
     }
 

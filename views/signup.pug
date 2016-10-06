@@ -10,7 +10,9 @@ block content
           // login form
           h2 Login to your account
           a(href='/auth/facebook')
-            span.fa.fa-facebook
+            img(src="../../images/icon-fb.png", alt='')
+          a(href='/auth/twitter')
+            img(src="../../images/icon-twitter.png", alt='')
           form(action='/', method='post')
             input(type='text', placeholder='Name')
             input(type='email', placeholder='Email Address')

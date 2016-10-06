@@ -6,17 +6,16 @@ module.exports = function(app, passport){
     if(req.isAuthenticated()) {
       return next();
     }
-
     res.redirect('/')
   }
 
   // Sign up
-  app.get('/', function(req, res){
+  app.get('/login', function(req, res){
     res.render('signup', { message: req.flash('loginMessage') });
   });
 
   // Sign up
-  app.post('/', passport.authenticate('local-signup', {
+  app.post('/login', passport.authenticate('local-signup', {
     successRedirect : '/home',
     failureRedirect : '/',
     failureFlash: true
@@ -43,11 +42,6 @@ module.exports = function(app, passport){
       failureRedirect : '/login',
       failureFlash: true
     }));
-
-  // Secret
-  // app.get('/home', isLoggedIn, function(req, res){
-  //   res.render('home', { message: req.flash('loginMessage') });
-  // });
 
   // logout
   app.get('/logout', function(req, res){
@@ -81,29 +75,37 @@ module.exports = function(app, passport){
 
 
 
-    //Setting up data collecting system
+//Setting up data collecting system
     var http = require('http');
     var fs   = require('fs');
 
     var file    = fs.createWriteStream("tmp/file.csv"); //Create new empty file ?s=all&tv=200&xv=380
     var request = http.get("http://nces.ed.gov/collegenavigator/default.aspx?"+ncesQuery + "xp=2", function(response) {
-      file.on("close", function(){
-        var colleges = []; //Create empty array
+      var contentType = response.headers['content-type']; //To store the content type from the response e.g. text/html
 
-        require("fast-csv").fromPath("tmp/file.csv", {headers: true}).on("data", function(data){
-          if (data["Name"]) {
-            colleges.push(data); //Push data into array if college has name
-          }
-        }).on("end", function(){
-          res.render('home', {colleges: colleges}); //Send array to front end
-          // res.send(colleges); //Send array to front end
+      if (contentType.toLowerCase().includes("html")) { //Check if respnse is html or csv
+        res.render('home', {colleges: [], message: "No Results, Please Refine Your Search"}); //if html render error msg
+      } else {
+        file.on("close", function(){ //Else if file is csv run code to gather and store search results
+          var colleges = []; //Create empty array
+
+          require("fast-csv").fromPath("tmp/file.csv", {headers: true}).on("data", function(data){
+            if (data["Name"]) {
+              colleges.push(data); //Push data into array if college has name
+            }
+          }).on("end", function(){
+            res.render('home', {colleges: colleges}); //Send array to front end
+            // res.send(colleges); //Send array to front end
+          });
         });
-      });
 
-      response.pipe(file); //Request info from website, using code for each variable
+        file.on("error", function(err){ //If there is an error, return empty and err msg
+          console.log(err)
+          res.render('home', {colleges: [], message: "No Results, Please Refine Your Search"});
+        });
+
+        response.pipe(file); //Request info from website, using code for each variable
+      }
     });
   });
-
-
 }
-
