@@ -28,6 +28,28 @@ $(document).ready(function(){
     })
   });
 
+//Delete items from shortlist
+  $('.delete').on('click', function(e) {
+    e.preventDefault();
+
+    var $college = $(e.target).parents('.college');
+    var id       = $college.data("id");
+
+    $.ajax({
+      url:'/shortlist/' + id,
+      type:'DELETE',
+      success: function(data){
+        console.log(data)
+        $college.remove();
+        alert('college deleted');
+      },
+      error: function(err){
+        alert(err);
+      }
+    })
+  });
+
+
 
 }); //End doc ready
 

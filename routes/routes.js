@@ -5,7 +5,7 @@ module.exports = function(app, passport){
     if(req.isAuthenticated()) {
       return next();
     }
-    res.redirect('/')
+    res.redirect('/home')
   }
 
 // Sign up
@@ -126,7 +126,7 @@ module.exports = function(app, passport){
     req.user.shortlist.push({
       'name': name,
       'address': address,
-      'url':url
+      'url': url
     });
 
     req.user.save(function(err, newUser){
@@ -139,5 +139,32 @@ module.exports = function(app, passport){
     res.render('shortlist',{shortlist: req.user.shortlist});
   });
 
+  app.delete('/shortlist/:id', isLoggedIn, function(req,res){
+    var id        = req.params.id;
+    var user      = req.user;
+    var shortlist = user.shortlist;
 
+    var listIndex = shortlist.findIndex(function(elem){
+      console.log(elem._id == id, elem._id, id);
+      if (elem._id == id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    console.log(listIndex);
+
+    if (listIndex >= 0) {
+      console.log(shortlist)
+      shortlist.splice(listIndex, 1);
+      user.shortlist = shortlist;
+      console.log(shortlist)
+      user.save(function(err, updatedUser){
+        res.json(updatedUser.shortlist);
+      });
+    } else {
+      res.json({message: "Cannot find list"}).status(400);
+    }
+  })
 } //end of module.export func

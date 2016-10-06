@@ -10,14 +10,19 @@ block content
         .col-sm-9.padding-right
           .search-results
             h2.title.text-center List
-              //- each item in shortlist
             - for (var i=0; i < shortlist.length; i++) {
-                .col-sm-4
-                  .college-wrapper
-                    .single-uni
-                      .college-info.text-center
-                        img(src='', alt='')
-                        h2#name=shortlist[i]['name']
-                        p#address=shortlist[i]['address']
-                        p#url=shortlist[i]['url']
+              .col-sm-4.college("data-id"=shortlist[i]._id)
+                .college-wrapper
+                  .single-uni
+                    .college-info.text-center
+                      img(src='', alt='')
+                      h2#name=shortlist[i]['name']
+                      p#address=shortlist[i]['address']
+                      p#url=shortlist[i]['url']
+                  .delete
+                    ul.nav.nav-pills.nav-justified
+                      li
+                        a(href='#')
+                          i.fa.fa-trash-o
+                          | Delete
             - }
