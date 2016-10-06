@@ -1,5 +1,5 @@
 module.exports = function(app, passport){
-// Routes
+
 // router middelware
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
@@ -75,14 +75,6 @@ module.exports = function(app, passport){
       ncesQuery += key + "=" + query[key] + "&"; //Query string to pass into nces website
     }
 
-    // try to find colleges using {name: nsecQuery}
-    //   if found render home with the colleges you found from mongo
-    //   else
-    //     you download file from nces & parse to an array(colleges)
-    //     save collges into the mongo
-    //       only after you save, you render home
-
-
 //Setting up data collecting system
     var http = require('http');
     var fs   = require('fs');
@@ -139,6 +131,7 @@ module.exports = function(app, passport){
     res.render('shortlist',{shortlist: req.user.shortlist});
   });
 
+//Deletes item from shorlist
   app.delete('/shortlist/:id', isLoggedIn, function(req,res){
     var id        = req.params.id;
     var user      = req.user;
@@ -146,25 +139,22 @@ module.exports = function(app, passport){
 
     var listIndex = shortlist.findIndex(function(elem){
       console.log(elem._id == id, elem._id, id);
-      if (elem._id == id) {
+      if (elem._id == id) { //Checks if selected elem id is matched in db
         return true;
       } else {
         return false;
       }
     });
 
-    console.log(listIndex);
-
-    if (listIndex >= 0) {
-      console.log(shortlist)
-      shortlist.splice(listIndex, 1);
-      user.shortlist = shortlist;
-      console.log(shortlist)
-      user.save(function(err, updatedUser){
+    if (listIndex >= 0) { //If elem index is found
+      shortlist.splice(listIndex, 1); //Splice item
+      user.shortlist = shortlist; //Update new list
+      user.save(function(err, updatedUser){ //Save updated list
         res.json(updatedUser.shortlist);
       });
     } else {
       res.json({message: "Cannot find list"}).status(400);
     }
-  })
+  });
+
 } //end of module.export func

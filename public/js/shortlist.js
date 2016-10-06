@@ -7,7 +7,6 @@ $(document).ready(function(){
 
     // get values from html & add to user db
     var $college = $(e.target).parents('.college-wrapper');
-
     var name = $college.find('.college-info h2').text();
     var address = $college.find('.college-info p').text();
     var url = $college.find('.college-info a').attr('href');

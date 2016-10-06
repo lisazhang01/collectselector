@@ -6,10 +6,10 @@ block content
       .row
         .col-sm-3
           .left-sidebar
-            h2 My Colleges
+            h2 Profile
         .col-sm-9.padding-right
           .search-results
-            h2.title.text-center List
+            h2.title.text-center My College
             - for (var i=0; i < shortlist.length; i++) {
               .col-sm-4.college("data-id"=shortlist[i]._id)
                 .college-wrapper
@@ -26,3 +26,15 @@ block content
                           i.fa.fa-trash-o
                           | Delete
             - }
+          .col-sm-12.text-center
+            ul.pagination
+              li
+                a(href='#') 1
+              li
+                a(href='#') 2
+              li
+                a(href='#') 3
+              li
+                a(href='#') 4
+              li
+                a(href='#') 5

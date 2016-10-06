@@ -2,7 +2,6 @@ extends layout
 
 block content
   section#form
-  // form
   .container
     .row
       .col-sm-12
@@ -11,7 +10,6 @@ block content
     .row
       .col-sm-4.col-sm-offset-1
         .login-form
-          // login form
           h2 Login to your account
           a(href='/auth/facebook')
             img(src="../../images/icon-fb.png", alt='')
@@ -24,12 +22,10 @@ block content
               input.checkbox(type='checkbox')
               |                 Keep me signed in
             button.btn.btn-default(type='submit') Login
-          // /login form
       .col-sm-1
         h2.or OR
       .col-sm-4
         .signup-form
-          // sign up form
           h2 New User Signup!
           form(action='/login', method='post')
             input(type='text', placeholder='Name')
