@@ -1,7 +1,6 @@
 module.exports = function(app, passport){
-
-  // Routes
-  // router middelware
+// Routes
+// router middelware
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
       return next();
@@ -9,61 +8,71 @@ module.exports = function(app, passport){
     res.redirect('/')
   }
 
-  // Sign up
+// Sign up
   app.get('/login', function(req, res){
     res.render('signup', { message: req.flash('loginMessage') });
   });
 
-  // Sign up
+// Sign up
   app.post('/login', passport.authenticate('local-signup', {
     successRedirect : '/home',
     failureRedirect : '/',
     failureFlash: true
   }));
 
-  // Login
+// Login
   app.get('/login', function(req, res){
     res.render('login', { message: req.flash('loginMessage') });
   });
 
-  // Login
+// Login
   app.post('/login', passport.authenticate('local-login', {
     successRedirect : '/home',
     failureRedirect : '/login',
     failureFlash: true
   }));
 
-  //fb login
+//fb login
   app.get('/auth/facebook', passport.authenticate('facebook'));
 
-  //fb callback
+//fb callback
   app.get('/auth/facebook/callback', passport.authenticate('facebook',{
       successRedirect : '/home',
       failureRedirect : '/login',
       failureFlash: true
     }));
 
-  // logout
+//twitter login
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+
+//twitter callback
+  app.get('/auth/twitter/callback', passport.authenticate('twitter',{
+      successRedirect : '/home',
+      failureRedirect : '/login',
+      failureFlash: true
+    }));
+
+// logout
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
   });
 
+//Check if key exists in obj
   var hasKey = function (obj) {
     for (var key in obj) {
       return true
     }
-
     return false
   };
 
 // Getting query info from selection
   app.get('/home', function(req, res){
-    var query     = hasKey(req.query) ? req.query : {s: "all", hs: 1};
+    var query     = hasKey(req.query) ? req.query : {s: "all", hs: 1}; // If query doesn't exist, use all for selection
     var ncesQuery = "";
 
     for (var key in query) {
-      ncesQuery += key + "=" + query[key] + "&";
+      ncesQuery += key + "=" + query[key] + "&"; //Query string to pass into nces website
     }
 
     // try to find colleges using {name: nsecQuery}

@@ -22,18 +22,11 @@ var UserSchema = new Schema({
         username     : String,
         img          : String
     },
-    google           : {
-        id           : String,
-        token        : String,
-        email        : String,
-        name         : String
-    },
-    instagram        : {
-        id           : String,
-        token        : String,
-        email        : String,
-        name         : String
-    }
+    shortlist        : [{
+        name         : Sting.
+        address      : String,
+        url          : String
+    }]
 });
 
 

@@ -4,6 +4,9 @@ var localStrategy = require('passport-local').Strategy;
 //load passport fb
 var facebookStrategy = require('passport-facebook').Strategy;
 
+//load passport twitter
+var twitterStrategy = require('passport-twitter').Strategy;
+
 // Load validator
 var validator = require('validator');
 
@@ -111,6 +114,42 @@ module.exports = function( passport ) {
             newUser.facebook.token = accessToken;
             newUser.facebook.name = profile.displayName;
 
+            newUser.save(function(err){
+              if(err){
+                console.log(err);
+              }
+                return done(null, newUser, req.flash('loginMessage', 'Logged in successfully'));
+              });
+            }
+          });
+      });
+    }));
+
+  //twitter strategy
+  passport.use(new twitterStrategy({
+    consumerKey: 'XqqFkWeaAxxCcgjowoFgMfsdS',
+    consumerSecret: 'Q5oZYwQia4d95zJAQdCCE2iHhcG5sqyREKDGwcIYeGFzR8WTgu',
+    callbackURL: 'http://localhost:3000/auth/twitter/callback',
+    passReqToCallback:true
+  }, function(req, token, tokenSecret, profile, done){
+
+      console.log(profile);
+
+      process.nextTick(function(){
+        User.findOne({'twitter.id': profile.id}, function(err, user){
+          if(err){
+            return done(err);
+          }
+          if(user){
+            return done(null, user, req.flash('loginMessage', 'Logged in successfully'));
+          }else{
+            var newUser = new User();
+            newUser.twitter.id       = profile.id;
+            newUser.twitter.token    = token;
+            newUser.twitter.secret   = tokenSecret;
+            newUser.twitter.name     = profile.displayName;
+            newUser.twitter.username = profile.username;
+            newUser.twitter.img      = profile.photos[0].value;
             newUser.save(function(err){
               if(err){
                 console.log(err);

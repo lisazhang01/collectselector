@@ -416,10 +416,10 @@ ul.sub-menu {
   text-align:left;
   list-style:none;
   -webkit-animation-name: change;
-  -webkit-animation-duration: 6s;
+  -webkit-animation-duration: 8s;
   -webkit-animation-iteration-count: infinite;
   animation-name: change;
-  animation-duration: 6s;
+  animation-duration: 8s;
   animation-iteration-count: infinite;
   color:#e72ca7;
 }

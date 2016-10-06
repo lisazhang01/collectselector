@@ -10,13 +10,17 @@ var session      = require('express-session');
 // Init app
 var app = express();
 
-// Connect with Mongo DB
-mongoose.connect('mongodb://127.0.0.1/passport');
-
 // Init middel-ware
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Connect with Mongo DB
+mongoose.connect('mongodb://127.0.0.1/passport');
+
+//Require models
+var User = require('./model/user');
+// var Colleges = require('./model/collegesdb');
 
 //support static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,9 +44,6 @@ require('./config/passport')(passport);
 
 // Routes
 require('./routes/routes')(app, passport);
-
-// //Twitter controller
-require('./controller/twitter')(app,passport);
 
 //listen
 app.listen( 3000, function(){

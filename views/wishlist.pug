@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  section#main
+    .container
+      .row
+        .col-sm-3
+          .left-sidebar
+            h2 My Colleges
+        .col-sm-9.padding-right
+          .search-results
+            h2.title.text-center List
+            - for (var i = 0; i < colleges.length; i++) {
+              .col-sm-4
+                .college-wrapper
+                  .single-uni
+                    .college-info.text-center
+                      img(src="", alt='')
+                      h2
+                        a(href= 'http://'+ colleges[i]["Website"])= colleges[i]["Name"]
+                      p= colleges[i]["Address"]
+                  .choose
+                    ul.nav.nav-pills.nav-justified
+                      li
+                        a(href='#')
+                          i.fa.fa-plus-square
+                          | Add to shortlist

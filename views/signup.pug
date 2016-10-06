@@ -5,6 +5,10 @@ block content
   // form
   .container
     .row
+      .col-sm-12
+        if (message.length > 0)
+         .alert.alert-danger #{loginMessage}
+    .row
       .col-sm-4.col-sm-offset-1
         .login-form
           // login form
@@ -13,7 +17,7 @@ block content
             img(src="../../images/icon-fb.png", alt='')
           a(href='/auth/twitter')
             img(src="../../images/icon-twitter.png", alt='')
-          form(action='/', method='post')
+          form(action='/login', method='post')
             input(type='text', placeholder='Name')
             input(type='email', placeholder='Email Address')
             span
@@ -27,7 +31,7 @@ block content
         .signup-form
           // sign up form
           h2 New User Signup!
-          form(action='/', method='post')
+          form(action='/login', method='post')
             input(type='text', placeholder='Name')
             input(type='email', placeholder='Email Address')
             input(type='password', placeholder='Password')
