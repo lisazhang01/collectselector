@@ -7,6 +7,19 @@ block content
         .col-sm-3
           .left-sidebar
             h2 Profile
+            #accordian.panel-group.search-options
+              .panel.panel-default
+                .panel-heading#profile
+                  h2
+                    a(href='#') My Test Scores
+                  h2
+                    a(href='#') My Portfolio
+                  h2
+                    a(href='#') My PS
+                  h2
+                    a(href='#') My Applications
+                  h2
+                    a(href='#') My Career
         .col-sm-9.padding-right
           .search-results
             h2.title.text-center My College
@@ -15,7 +28,7 @@ block content
                 .college-wrapper
                   .single-uni
                     .college-info.text-center
-                      img(src='', alt='')
+                      img(src='../images/col-img-01.jpeg', alt='')
                       h2#name=shortlist[i]['name']
                       p#address=shortlist[i]['address']
                       p#url=shortlist[i]['url']

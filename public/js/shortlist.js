@@ -19,10 +19,10 @@ $(document).ready(function(){
             $('#name').html(name);
             $('#address').html(address);
             $('#url').html(url);
-            alert('college saved');
+            // alert('college saved');
         },
         error: function(err){
-            alert(JSON.stringify(err));
+            alert('Please sign in to save');
         }
     })
   });
@@ -40,15 +40,13 @@ $(document).ready(function(){
       success: function(data){
         console.log(data)
         $college.remove();
-        alert('college deleted');
+        // alert('college deleted');
       },
       error: function(err){
         alert(err);
       }
     })
   });
-
-
 
 }); //End doc ready
 

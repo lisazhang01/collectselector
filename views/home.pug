@@ -41,6 +41,21 @@ block content
               .panel.panel-default.text-center
                 button#search Find my course
 
+          .left-sidebar#two
+            h2 Application Builder
+            #accordian.panel-group.search-options
+              .panel.panel-default
+                .panel-heading#profile
+                  h2
+                    a(href='#') Test Scores
+                  h2
+                    a(href='#') Portfolio
+                  h2
+                    a(href='#') Personal Statement
+                  h2
+                    a(href='#') Applications
+                  h2
+                    a(href='#') Interview
         .col-sm-9.padding-right
           .search-results
             h2.title.text-center Search Results
@@ -49,7 +64,7 @@ block content
                 .college-wrapper
                   .single-uni
                     .college-info.text-center
-                      img(src="", alt='')
+                      img#img(src='../images/col-img-03.jpeg', alt='')
                       h2
                         a(href= 'http://'+ colleges[i]["Website"])= colleges[i]["Name"]
                       p= colleges[i]["Address"]
@@ -73,58 +88,7 @@ block content
               li
                 a(href='#') 5
 
-          .top-ten
-            h2.title.text-center US News Top 10
-            #top-ten-carousel.carousel.slide(data-ride='carousel')
-              .carousel-inner
-                .item.active
-                  .col-sm-4
-                    .college-wrapper
-                      .single-uni
-                        .college-info.text-center
-                          img(src='', alt='')
-                          h2 College Name
-                          p Description
-                  .col-sm-4
-                    .college-wrapper
-                      .single-uni
-                        .college-info.text-center
-                          img(src='', alt='')
-                          h2 College Name
-                          p Description
-                  .col-sm-4
-                    .collge-wrapper
-                      .single-uni
-                        .college-info.text-center
-                          img(src='', alt='')
-                          h2 College Name
-                          p Description
-                .item
-                  .col-sm-4
-                    .college-wrapper
-                      .single-uni
-                        .college-info.text-center
-                          img(src='', alt='')
-                          h2 College Name
-                          p Description
-                  .col-sm-4
-                    .college-wrapper
-                      .single-uni
-                        .college-info.text-center
-                          img(src='', alt='')
-                          h2 College Name
-                          p Description
-                  .col-sm-4
-                    .college-wrapper
-                      .single-uni
-                        .college-info.text-center
-                          img(src='', alt='')
-                          h2 College Name
-                          p Description
-              a.left.top-ten-control(href='#top-ten-carousel', data-slide='prev')
-                i.fa.fa-angle-left
-              a.right.top-ten-control(href='#top-ten-carousel', data-slide='next')
-                i.fa.fa-angle-right
+
 
 
 

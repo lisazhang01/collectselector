@@ -1,5 +1,17 @@
 $( document ).ready(function() {
 
+  //Scroll down to search area on click
+  var scrollDown = function() {
+    $('#topSearch').click(function(){
+      var offset = $(this).offset();
+      offset.top += 500;
+      $('html, body').animate({
+        scrollTop: offset.top,
+      });
+    });
+  };
+  scrollDown();
+
   //Dynamically generate dropdown menu by state
   var byStates = function() {
     for (var key in states) {
@@ -10,13 +22,13 @@ $( document ).ready(function() {
   //Dynamically generate program and sub program drop down menu
   var resetLevelTwo = function () {
     $('#levelTwo').html(""); // clears out the existing stuff
-    $('<option>').text("Select Sub Category").val("").appendTo('#levelTwo'); //Create All option and add to top of list
+    $('<option>').text("Select Sub Category").val("").appendTo('#levelTwo'); //Create header and add to top of list
     $('<option>').text("All").val("").appendTo('#levelTwo'); //Create All option and add to top of list
   };
 
   var resetLevelThree = function () {
     $('#levelThree').html(""); // clears out the existing stuff
-    $('<option>').text("Select Sub Category").val("").appendTo('#levelThree'); //Create All option and add to top of list
+    $('<option>').text("Select Sub Category").val("").appendTo('#levelThree'); //Create header and add to top of list
     $('<option>').text("All").val("").appendTo('#levelThree'); //Create All option and add to top of list
   };
 
@@ -59,6 +71,7 @@ $( document ).ready(function() {
     });
   };
 
+  // Getting unique CIP for search field
   var extractInput = function () {
     var params = {};
 
@@ -70,24 +83,24 @@ $( document ).ready(function() {
     var $levelTwo   = $('#levelTwo');
     var $levelThree = $('#levelThree');
 
-    var progLvlOneCip   = $levelOne.val()   ? programCip[$levelOne.val()].cip : "";
+    var progLvlOneCip   = $levelOne.val()   ? programCip[$levelOne.val()].cip : ""; //Check if has value
     var progLvlTwoCip   = $levelTwo.val()   ? programCip[$levelOne.val()].sub[$levelTwo.val()].cip : "";
     var progLvlThreeCip = $levelThree.val() ? programCip[$levelOne.val()].sub[$levelTwo.val()].sub[$levelThree.val()].cip : "";
 
-    params["p"] = progLvlThreeCip || progLvlTwoCip || progLvlOneCip;
+    params["p"] = progLvlThreeCip || progLvlTwoCip || progLvlOneCip; //Select lowest cip level for search
 
     return params;
   };
 
+  // Compose query string
   var querifyObject = function (obj) {
     var queryStr = "";
 
     for (var key in obj) {
-      if (obj[key]) {
+      if (obj[key]) { //If selected & has key
         queryStr += key + "=" + obj[key] + "&";
       }
     }
-
     return queryStr;
   };
 
@@ -99,13 +112,16 @@ $( document ).ready(function() {
     location.href = "/home?" + queryStr;
   };
 
-  // Initilize
-  var init = function () {
-    $('#search').click(rankByParam);
-
+  //Initialise functions
+   var init = function () {
+    $('#search').click(rankByParam); //Ranking function on click
     byStates();
     byProgram();
-  };
+    };
+  if(window.location.search != ""){ //Scroll to main section after search
+    window.scrollTo(0, $('#main').offset().top);
+  }
 
   init();
+
 }); //End of doc ready func
