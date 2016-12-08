@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect with Mongo DB
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/passport');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1/passport');
 
 //Require models
 var User = require('./model/user');
