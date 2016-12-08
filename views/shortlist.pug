@@ -23,7 +23,7 @@ block content
         .col-sm-9.padding-right
           .search-results
             h2.title.text-center My College
-            - for (var i=0; i < shortlist.length; i++) {
+            - for (var i=0; i < shortlist.length; i++) { //Loops through shortlist
               .col-sm-4.college("data-id"=shortlist[i]._id)
                 .college-wrapper
                   .single-uni
@@ -31,7 +31,7 @@ block content
                       img(src='../images/col-img-01.jpeg', alt='')
                       h2#name=shortlist[i]['name']
                       p#address=shortlist[i]['address']
-                      p#url=shortlist[i]['url']
+                      // p#url=shortlist[i]['url']
                   .delete
                     ul.nav.nav-pills.nav-justified
                       li

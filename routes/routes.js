@@ -37,20 +37,20 @@ module.exports = function(app, passport){
 
 //fb callback
   app.get('/auth/facebook/callback', passport.authenticate('facebook',{
-      successRedirect : '/home',
-      failureRedirect : '/login',
-      failureFlash: true
-    }));
+    successRedirect : '/home',
+    failureRedirect : '/login',
+    failureFlash: true
+  }));
 
 //twitter login
   app.get('/auth/twitter', passport.authenticate('twitter'));
 
 //twitter callback
   app.get('/auth/twitter/callback', passport.authenticate('twitter',{
-      successRedirect : '/home',
-      failureRedirect : '/login',
-      failureFlash: true
-    }));
+    successRedirect : '/home',
+    failureRedirect : '/login',
+    failureFlash: true
+  }));
 
 // logout
   app.get('/logout', function(req, res){
@@ -79,7 +79,7 @@ module.exports = function(app, passport){
     var http = require('http');
     var fs   = require('fs');
 
-    var file    = fs.createWriteStream("tmp/file.csv"); //Create new empty file ?s=all&tv=200&xv=380
+    var file    = fs.createWriteStream("tmp/file.csv"); //Create new empty file
     var request = http.get("http://nces.ed.gov/collegenavigator/default.aspx?"+ncesQuery + "xp=2", function(response) {
       var contentType = response.headers['content-type']; //To store the content type from the response e.g. text/html
 

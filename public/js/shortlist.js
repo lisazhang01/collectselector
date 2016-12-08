@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 // Grabbing text info from saved colleges to present in wishlist
   $('.choose').on('click', function(e){
-    // prevent to redirect to another/same page
     e.preventDefault();
 
     // get values from html & add to user db
